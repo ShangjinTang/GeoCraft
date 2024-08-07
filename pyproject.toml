@@ -1,13 +1,16 @@
 [tool.poetry]
 name = "geocraft"
-version = "0.1.4"
-description = "Geo (WebGIS) related tools"
+version = "0.2.0"
+description = "Python library for Geo & WebGIS."
 authors = ["Shangjin Tang <shangjin.tang@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
 
 [build-system]
 requires = ["poetry-core"]

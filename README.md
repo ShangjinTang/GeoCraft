@@ -3,7 +3,7 @@
 ## Requirements
 
 ```plain
-python >= 3.10
+python >= 3.9
 ```
 
 ## Installation
@@ -15,19 +15,21 @@ pip install geocraft
 ## Usage
 
 ```python
-from geocraft.cn.coordinate_converter import (
-    bd09_to_gcj02,
-    bd09_to_wgs84,
-    gcj02_to_bd09,
-    gcj02_to_wgs84,
-    wgs84_to_bd09,
-    wgs84_to_gcj02,
-)
+from geocraft.coord_converter import CoordConverter
 
-print(bd09_to_gcj02(116.404, 39.915))  # (116.39762729119315, 39.90865673957631)
-print(bd09_to_wgs84(116.404, 39.915))  # (116.3913836995125, 39.907253214522164)
-print(gcj02_to_bd09(116.404, 39.915))  # (116.41036949371029, 39.92133699351021)
-print(gcj02_to_wgs84(116.404, 39.915))  # (116.39775550083061, 39.91359571849836)
-print(wgs84_to_bd09(116.404, 39.915))  # (116.41662724378733, 39.922699552216216)
-print(wgs84_to_gcj02(116.404, 39.915))  # (116.41024449916938, 39.91640428150164)
+converter = CoordConverter(src=CoordConverter.BD09, target=CoordConverter.GCJ02)
+print(converter.convert(116.404, 39.915))  # (116.39762729119315, 39.90865673957631)
 ```
+
+Supported conversions:
+
+- Conversions between different coordinate systems (Non-Mercator):
+
+  - `WGS84` <-> `GCJ02`
+  - `GCJ02` <-> `BD09`
+  - `BD09` <-> `WGS84`
+
+- Conversions between same coordinate systems (Non-Mercator <-> Mercator):
+  - `WGS84` <-> `WGS84MC`
+  - `GCJ02` <-> `GCJ02MC`
+  - `BD09` <-> `BD09MC`
