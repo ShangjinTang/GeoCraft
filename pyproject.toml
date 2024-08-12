@@ -16,3 +16,7 @@ pytest = "^8.3.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+coord-convert = "scripts.coord_convert:main"
+parse-baidumap = "scripts.parse_baidumap:main"
