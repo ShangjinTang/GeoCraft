@@ -1,5 +1,5 @@
 """
-coordinate_converter.py
+_converter.py
 
 This module provides functions for converting coordinates between different coordinate systems commonly used in mapping applications.
 

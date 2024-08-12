@@ -1,5 +1,7 @@
 # geocraft
 
+Note: `geocraft` is still under development and backward compatibility is not guaranteed before reaching v1.0.0.
+
 ## Requirements
 
 ```plain
@@ -14,14 +16,14 @@ pip install geocraft
 
 ## Usage
 
-### geocraft.coord_converter
+### CoordConverter
 
-This package is used for convert a coordinate pair (lng, lat) between different coordinate systems.
+`CoordConverter` is used for convert a coordinate pair (lng, lat) between different coordinate systems.
 
 ```python
-from geocraft.coord_converter import CoordConverter
+from geocraft import CoordConverter, CoordType
 
-converter = CoordConverter(src=CoordConverter.BD09, target=CoordConverter.GCJ02)
+converter = CoordConverter(src=CoordType.BD09, target=CoordType.GCJ02)
 print(converter.convert(116.404, 39.915))
 ```
 
@@ -35,18 +37,18 @@ Supported conversions:
 
 - Conversions between different coordinate systems (Non-Mercator):
 
-  - `WGS84` <-> `GCJ02`
-  - `GCJ02` <-> `BD09`
-  - `BD09` <-> `WGS84`
+  - `CoordType.WGS84` <-> `CoordType.GCJ02`
+  - `CoordType.GCJ02` <-> `CoordType.BD09`
+  - `CoordType.BD09` <-> `CoordType.WGS84`
 
 - Conversions between same coordinate systems (Non-Mercator <-> Mercator):
-  - `WGS84` <-> `WGS84MC`
-  - `GCJ02` <-> `GCJ02MC`
-  - `BD09` <-> `BD09MC`
+  - `CoordType.WGS84` <-> `CoordType.WGS84MC`
+  - `CoordType.GCJ02` <-> `CoordType.GCJ02MC`
+  - `CoordType.BD09` <-> `CoordType.BD09MC`
 
-### geocraft.unstable
+## Unstable functionalities
 
-This package unstable, based on third-party implementations, stability may be compromised.
+Package `geocraft.unstable` is based on third-party implementations, stability may be compromised.
 
 ```python
 from geocraft.unstable import parse_baidumap_polygon
