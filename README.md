@@ -71,7 +71,7 @@ print(parser.parse("06d2dffda107b0ef89f15db6"))
 
 For commands below, use `--help` to check all available options.
 
-### geocraft-coord-converter
+### geocraft-coord-convert
 
 ```bash
 $ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
@@ -86,10 +86,10 @@ $ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
 
 </details>
 
-### geocraft-parse-baidumap (unstable)
+### geocraft-baidumap-parse (unstable)
 
 ```bash
-$ geocraft-parse-baidumap -i "06d2dffda107b0ef89f15db6" -o "default"
+$ geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6" -o "default"
 ```
 
 <details>
