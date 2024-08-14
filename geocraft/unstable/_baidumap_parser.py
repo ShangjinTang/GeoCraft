@@ -46,17 +46,7 @@ def parse_polygon(uid):
                 )
                 points_wgs84.append([wgs84_lng, wgs84_lat])
 
-            geojson_dict = {
-                "type": "FeatureCollection",
-                "features": [
-                    {
-                        "type": "Feature",
-                        "properties": {},
-                        "geometry": {"coordinates": [points_wgs84], "type": "Polygon"},
-                    }
-                ],
-            }
-            return geojson_dict
+            return points_wgs84
 
     else:
         print(f"Connection error to {url}")

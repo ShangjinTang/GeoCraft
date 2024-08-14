@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geocraft"
-version = "0.2.0"
+version = "0.3.0"
 description = "Python library for Geo & WebGIS."
 authors = ["Shangjin Tang <shangjin.tang@gmail.com>"]
 readme = "README.md"
@@ -18,5 +18,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-coord-convert = "scripts.coord_convert:main"
-parse-baidumap = "scripts.parse_baidumap:main"
+geoccoord-convert = "geocraft._scripts.coord_convert:main"
+parse-baidumap = "geocraft._scripts.parse_baidumap:main"
