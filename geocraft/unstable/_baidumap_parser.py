@@ -2,8 +2,9 @@ import json
 
 import requests
 
+from geocraft import CoordType
+
 from ..coord_converter import CoordConverter
-from ..coord_type import CoordType
 
 bd09mc_to_bd09_converter = CoordConverter(src=CoordType.BD09MC, target=CoordType.BD09)
 bd09_to_wgs84_converter = CoordConverter(src=CoordType.BD09, target=CoordType.WGS84)

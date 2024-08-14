@@ -18,3 +18,5 @@
 .venv
 /poetry.toml
 /poetry.lock
+
+/main.py

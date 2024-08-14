@@ -1,9 +1,6 @@
 # geocraft
 
-Note:
-
-- `geocraft` is still under development and backward compatibility is not guaranteed before reaching v1.0.0.
-- Package `geocraft.unstable` is based on third-party implementations, stability may be compromised.
+Note: `geocraft` is still under development and backward compatibility is not guaranteed before reaching v1.0.0.
 
 ## Requirements
 
@@ -17,7 +14,7 @@ python >= 3.9
 pip install geocraft
 ```
 
-## Use As Library
+## Use as Library
 
 ### CoordConverter
 
@@ -52,12 +49,13 @@ Supported conversions:
   - `CoordType.GCJ02` <-> `CoordType.GCJ02MC`
   - `CoordType.BD09` <-> `CoordType.BD09MC`
 
-## parse_baidumap (unstable)
+### BaidumapParser (unstable)
 
 ```python
-from geocraft.unstable import parse_baidumap_polygon
+from geocraft.unstable import BaidumapParser, PolygonOutputType
 
-print(parse_baidumap_polygon("06d2dffda107b0ef89f15db6"))
+parser = BaidumapParser(output_type=PolygonOutputType.DEFAULT)
+print(parser.parse("06d2dffda107b0ef89f15db6"))
 ```
 
 <details>
@@ -71,19 +69,27 @@ print(parse_baidumap_polygon("06d2dffda107b0ef89f15db6"))
 
 ## Use as Command-Line Tools
 
+For commands below, use `--help` to check all available options.
+
 ### geocraft-coord-converter
 
 ```bash
 $ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
+```
+
+<details>
+  <summary>Output</summary>
+
+```plain
 (116.39762729119315, 39.90865673957631)
 ```
 
-Use `geocraft-coord-convert --help` to check all available options.
+</details>
 
 ### geocraft-parse-baidumap (unstable)
 
 ```bash
-$ geocraft-parse-baidumap -i 06d2dffda107b0ef89f15db6
+$ geocraft-parse-baidumap -i "06d2dffda107b0ef89f15db6" -o "default"
 ```
 
 <details>
@@ -94,5 +100,3 @@ $ geocraft-parse-baidumap -i 06d2dffda107b0ef89f15db6
 ```
 
 </details>
-
-Use `geocraft-parse-baidumap --help` to check all available options.
