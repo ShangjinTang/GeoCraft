@@ -89,7 +89,7 @@ $ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
 ### geocraft-baidumap-parse (unstable)
 
 ```bash
-$ geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6" -o "default"
+$ geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6"
 ```
 
 <details>
