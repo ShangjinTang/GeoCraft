@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geocraft"
-version = "0.3.0"
+version = "0.3.2"
 description = "Python library for Geo & WebGIS."
 authors = ["Shangjin Tang <shangjin.tang@gmail.com>"]
 readme = "README.md"

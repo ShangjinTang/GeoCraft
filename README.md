@@ -21,9 +21,9 @@ pip install geocraft
 `CoordConverter` is used for convert a coordinate pair (lng, lat) between different coordinate systems.
 
 ```python
-from geocraft import CoordConverter, CoordType
+from geocraft import CoordConverter
 
-converter = CoordConverter(src=CoordType.BD09, target=CoordType.GCJ02)
+converter = CoordConverter(src="bd09", target="gcj02")
 print(converter.convert(116.404, 39.915))
 ```
 
@@ -40,21 +40,21 @@ Supported conversions:
 
 - Conversions between different coordinate systems (Non-Mercator):
 
-  - `CoordType.WGS84` <-> `CoordType.GCJ02`
-  - `CoordType.GCJ02` <-> `CoordType.BD09`
-  - `CoordType.BD09` <-> `CoordType.WGS84`
+  - `wgs84` <-> `gcj02`
+  - `gcj02` <-> `bd09`
+  - `bd09` <-> `wgs84`
 
 - Conversions between same coordinate systems (Non-Mercator <-> Mercator):
-  - `CoordType.WGS84` <-> `CoordType.WGS84MC`
-  - `CoordType.GCJ02` <-> `CoordType.GCJ02MC`
-  - `CoordType.BD09` <-> `CoordType.BD09MC`
+  - `wgs84` <-> `wgs84mc`
+  - `gcj02` <-> `gcj02mc`
+  - `bd09` <-> `bd09mc`
 
 ### BaidumapParser (unstable)
 
 ```python
-from geocraft.unstable import BaidumapParser, PolygonOutputType
+from geocraft.unstable import BaidumapParser
 
-parser = BaidumapParser(output_type=PolygonOutputType.DEFAULT)
+parser = BaidumapParser()
 print(parser.parse("06d2dffda107b0ef89f15db6"))
 ```
 

@@ -2,25 +2,17 @@
 
 import argparse
 
-from geocraft import CoordConverter, CoordType
-
-
-def get_enum_from_string(enum_str):
-    try:
-        return CoordType[enum_str.upper()]
-    except KeyError:
-        raise ValueError("Invalid enum value")
+from geocraft import CoordConverter
 
 
 def main():
-    valid_type_strs = [e.value for e in CoordType]
     parser = argparse.ArgumentParser(description="")
     parser.add_argument(
         "-i",
         "--input_type",
         required=True,
         type=str,
-        choices=valid_type_strs,
+        choices=["wgs84", "wgs84mc", "bd09", "bd09mc", "gcj02", "gcj02mc"],
         help="Input coordinate system type",
     )
     parser.add_argument(
@@ -28,7 +20,7 @@ def main():
         "--output_type",
         required=True,
         type=str,
-        choices=valid_type_strs,
+        choices=["wgs84", "wgs84mc", "bd09", "bd09mc", "gcj02", "gcj02mc"],
         help="Output coordinate system type",
     )
     parser.add_argument(
@@ -38,13 +30,10 @@ def main():
     args = parser.parse_args()
 
     try:
-        coord_converter = CoordConverter(
-            get_enum_from_string(args.input_type),
-            get_enum_from_string(args.output_type),
-        )
+        coord_converter = CoordConverter(args.input_type, args.output_type)
         lnglat = args.coordinate.strip().split(",")
         if len(lnglat) != 2:
-            raise argparse.ArgumentError("--coordinate must be size 2")
+            raise argparse.ArgumentError(args.coordinate, "must be size 2")
         lng, lat = float(lnglat[0].strip()), float(lnglat[1].strip())
         converted_coord = coord_converter.convert(lng, lat)
         print(converted_coord)

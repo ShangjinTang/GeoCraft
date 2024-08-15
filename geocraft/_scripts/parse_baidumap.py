@@ -2,18 +2,10 @@
 
 import argparse
 
-from geocraft.unstable import BaidumapParser, PolygonOutputType
-
-
-def get_enum_from_string(enum_str):
-    try:
-        return PolygonOutputType[enum_str.upper()]
-    except KeyError:
-        raise ValueError("Invalid enum value")
+from geocraft.unstable import BaidumapParser
 
 
 def main():
-    valid_polygon_output_type_strs = [e.value for e in PolygonOutputType]
     parser = argparse.ArgumentParser(description="")
     parser.add_argument(
         "-i",
@@ -27,15 +19,15 @@ def main():
         "--output_type",
         required=False,
         type=str,
-        default="default",
-        choices=valid_polygon_output_type_strs,
+        default="",
+        choices=["", "geojson"],
         help="Output Polygon Type",
     )
 
     args = parser.parse_args()
 
     try:
-        parser = BaidumapParser(output_type=get_enum_from_string(args.output_type))
+        parser = BaidumapParser(output_type=args.output_type)
         print(parser.parse(args.input_uid))
     except Exception as e:
         print(e)

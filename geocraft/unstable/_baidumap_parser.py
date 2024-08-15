@@ -2,15 +2,13 @@ import json
 
 import requests
 
-from geocraft import CoordType
-
 from ..coord_converter import CoordConverter
 
-bd09mc_to_bd09_converter = CoordConverter(src=CoordType.BD09MC, target=CoordType.BD09)
-bd09_to_wgs84_converter = CoordConverter(src=CoordType.BD09, target=CoordType.WGS84)
+bd09mc_to_bd09_converter = CoordConverter(src="bd09mc", target="bd09")
+bd09_to_wgs84_converter = CoordConverter(src="bd09", target="wgs84")
 
 
-def fetch_json_data(url, retries=3):
+def fetch_json_data(url: str, retries: int = 3):
     for _ in range(retries):
         response = requests.get(url)
         if response.status_code == 200:
@@ -20,7 +18,7 @@ def fetch_json_data(url, retries=3):
     return None
 
 
-def parse_polygon(uid):
+def parse_polygon(uid: str):
     def get_data_by_uid(uid: str):
         return f"https://map.baidu.com/?newmap=1&qt=ext&uid={uid}&ext_ver=new&ie=utf-8&l=11"
 
@@ -54,7 +52,7 @@ def parse_polygon(uid):
         return
 
 
-def parse_geojson(uid):
+def parse_geojson(uid: str):
     points_wgs84 = parse_polygon(uid)
     geojson_dict = {
         "type": "FeatureCollection",
