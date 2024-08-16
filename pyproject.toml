@@ -1,5 +1,8 @@
 [tool.poetry]
 name = "geocraft"
+# To enable dynamic versioning when using 'poetry build':
+# - non-pipx: poetry self add "poetry-dynamic-versioning[plugin]"
+# - pipx: poetry self add "poetry-dynamic-versioning[plugin]"
 version = "0.0.0"
 description = "Python library for Geo & WebGIS."
 authors = ["Shangjin Tang <shangjin.tang@gmail.com>"]
