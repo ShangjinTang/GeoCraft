@@ -1,6 +1,6 @@
 # geocraft
 
-Note: `geocraft` is still under development and backward compatibility is not guaranteed before reaching v1.0.0.
+**Note**: `geocraft` is still under development and backward compatibility is not guaranteed before reaching v1.0.0.
 
 ## Requirements
 
