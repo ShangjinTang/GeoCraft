@@ -2,8 +2,11 @@ name: Publish Python Package
 
 on:
   push:
+    paths:
+      - ".github/workflows/*.yml"
+      - "**.py"
     branches:
-      - master
+      - "master"
     tags:
       - "v*"
 
