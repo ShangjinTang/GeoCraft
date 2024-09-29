@@ -51,10 +51,38 @@ Supported conversions:
 
 ### BaidumapParser (unstable)
 
+Parse a polygon from a Baidu Map uid, no API key is required.
+
+NOTE: **This is unstable, means subject to change, or become invalid in future.**
+
+1. Parse result is wgs84 format, compatible with [GeoJSON - Polygon - coordinates](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.6).
+2. Frequent calls would lead to `requests.exceptions.ConnectionError`. To avoid this, implement a retry logic on your own (e.g. 10 seconds per retry, max 3 retries).
+3. Not all UIDs have polygon info. Return `None` if no polygon info found.
+
+<details>
+  <summary>How to get uid in Baidu Map</summary>
+
+- Check UID for a baidumap search in browser:
+
+  1.  Open [Baidu Map](https://map.baidu.com/).
+  2.  Search place, such as `故宫博物院`. Click into the search result at left top panel.
+  3.  Check `uid=...` in the url. For example, uid is `06d2dffda107b0ef89f15db6` for link `https://map.baidu.com/poi/故宫博物院/@12958109.04,4827479.92,16z?uid=06d2dffda107b0ef89f15db6&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl`.
+
+- Get multiple UIDs using API:
+
+  1. [Register an API key](https://lbsyun.baidu.com/faq/api?title=webapi/guide/webservice-placeapi/prepare). Note there are limits and quotas on API Requests.
+  2. See [How to Use](https://lbsyun.baidu.com/faq/api?title=webapi/guide/webservice-placeapi/use). `uid` is in API response; each place has an `uid`.
+  3. To find multiple Baidu UIDs with a query/tag in a district, see: [Baidu Map - Web Service API - District](https://lbsyun.baidu.com/faq/api?title=webapi/guide/webservice-placeapi/district).
+
+</details>
+
 ```python
 from geocraft.unstable import BaidumapParser
 
 parser = BaidumapParser()
+# or parse with geojson:
+# parser = BaidumapParser(output_type="geojson")
+
 print(parser.parse("06d2dffda107b0ef89f15db6"))
 ```
 
@@ -74,7 +102,7 @@ For commands below, use `--help` to check all available options.
 ### geocraft-coord-convert
 
 ```bash
-$ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
+geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
 ```
 
 <details>
@@ -89,7 +117,9 @@ $ geocraft-coord-convert -i "bd09" -o "gcj02" -c "116.404, 39.915"
 ### geocraft-baidumap-parse (unstable)
 
 ```bash
-$ geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6"
+geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6"
+# or geojson format:
+# geocraft-baidumap-parse -i "06d2dffda107b0ef89f15db6" --output_type geojson
 ```
 
 <details>
